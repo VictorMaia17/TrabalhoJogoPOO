@@ -1,0 +1,44 @@
+# ============================================
+# 🧠 Projeto Java + Gradle + IntelliJ IDEA
+# ============================================
+
+# --- Gradle ---
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradlew
+!gradlew.bat
+
+# --- IntelliJ IDEA ---
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# --- Eclipse (caso abra o projeto lá) ---
+.classpath
+.project
+.settings/
+
+# --- VS Code (caso abra o projeto lá) ---
+.vscode/
+
+# --- Arquivos de compilação ---
+*.class
+*.jar
+*.war
+*.ear
+
+# --- Arquivos temporários ---
+*.log
+*.tmp
+*.bak
+*.swp
+
+# --- Sistema Operacional ---
+.DS_Store
+Thumbs.db
+
+# --- Arquivos de ambiente ---
+.env

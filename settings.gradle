@@ -1,0 +1,4 @@
+rootProject.name = 'ModulosJogos'
+include 'ModuloEntidades', 'ModuloMovimentacao'
+include 'ModuloExibicao'
+
