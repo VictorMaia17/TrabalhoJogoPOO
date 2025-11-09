@@ -1,24 +1,24 @@
 package ModuloExibicao;
 
-import Entidades.Entity;
-import Entidades.EntityForm;
-import Movimentacao.MovimentacaoEntidade;
+import Entidades.MovingEntityForm;
+import Movimentacao.MoveEntity;
 
 import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        EntityForm quadrado = new EntityForm(10, 400, 800,
+        MovingEntityForm quadrado = new MovingEntityForm(400, 800,
                 new int[] {5, 5, 20, 20},
-                new int[] {5, 20, 20, 5},
-                4
+                new int[] {5, 20, 20, 5}, 4, 10
         );
 
-        PainelExibicao exibicao = new PainelExibicao(new Entity[]{quadrado});
-        MovimentacaoEntidade movimentacao = new MovimentacaoEntidade(quadrado);
+        PainelExibicao exibicao = new PainelExibicao();
+         MoveEntity movimentacaoQuadrado = new MoveEntity(quadrado);
 
-        exibicao.addKeyListener(movimentacao);
+        exibicao.addKeyListener(movimentacaoQuadrado);
+
+        exibicao.addEntity(quadrado);
 
         // Cria o frame e adiciona o painel
         JFrame frame = new JFrame("Painel");

@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ModuloColisao" />
             <option value="$PROJECT_DIR$/ModuloEntidades" />
             <option value="$PROJECT_DIR$/ModuloExibicao" />
             <option value="$PROJECT_DIR$/ModuloMovimentacao" />

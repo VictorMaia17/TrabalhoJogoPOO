@@ -1,46 +1,26 @@
 package Entidades;
 
+import javax.swing.*;
 import java.awt.*;
 
-public class EntitySprite extends BaseEntity {
+public class EntitySprite implements Entity {
 
-    private int positionX;
-    private int positionY;
-    private int height;
-    private int width;
-    private Image sprite;
+    protected int painelHeight;
+    protected int painelWidth;
+    protected int positionX;
+    protected int positionY;
+    protected int height;
+    protected int width;
+    protected Image sprite;
 
-    public EntitySprite(int movementSpeed, int PAINEL_HEIGHT, int PAINEL_WIDTH, int positionX, int positionY, int height, int width, Image sprite) {
-        super(movementSpeed, PAINEL_HEIGHT, PAINEL_WIDTH);
+    public EntitySprite(int painelHeight, int painelWidth, int positionX, int positionY, int height, int width, Image sprite) {
+        this.painelHeight = painelHeight;
+        this.painelWidth = painelWidth;
         this.positionX = positionX;
         this.positionY = positionY;
         this.height = height;
         this.width = width;
         this.sprite = sprite;
-    }
-
-    @Override
-    public void moveToTop(int movementDistance) {
-        this.positionY -= movementDistance;
-        interactionBorder();
-    }
-
-    @Override
-    public void moveToBottom(int movementDistance) {
-        this.positionY += movementDistance;
-        interactionBorder();
-    }
-
-    @Override
-    public void moveToLeft(int movementDistance) {
-        this.positionX -= movementDistance;
-        interactionBorder();
-    }
-
-    @Override
-    public void moveToRight(int movementDistance) {
-        this.positionX += movementDistance;
-        interactionBorder();
     }
 
     public void setHeight(int height) {
@@ -56,21 +36,34 @@ public class EntitySprite extends BaseEntity {
         g.drawImage(sprite, positionX, positionY, width, height, null);
     }
 
-    public void interactionBorder() {
+    @Override
+    public int getX() {
+        return positionX;
+    }
 
-        if(positionX > PAINEL_WIDTH) {
-            positionX = 0;
-        }
-        if(positionY > PAINEL_HEIGHT) {
-            positionY = 0;
-        }
-        if(positionX < 0) {
-            positionX = PAINEL_WIDTH - width;
-        }
-        if(positionY < 0) {
-            positionY = PAINEL_HEIGHT - height;
-        }
+    @Override
+    public int getY() {
+        return positionY;
+    }
 
+    @Override
+    public int getWidth() {
+        return width;
+    }
+
+    @Override
+    public int getHeight() {
+        return height;
+    }
+
+    @Override
+    public void setX(int x) {
+        positionX = x;
+    }
+
+    @Override
+    public void setY(int y) {
+        positionY = y;
     }
 
 }

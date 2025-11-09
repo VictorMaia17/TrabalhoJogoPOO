@@ -50,4 +50,37 @@ public class MovingEntityForm extends EntityForm implements MovementEntitys{
         }
         interactionBorder();
     }
+
+    private void interactionBorder() {
+
+        if(xPoints[0] > painelWidth) {
+
+            for(int i = 0; i < xPoints.length; i++){
+                xPoints[i] -= painelWidth;
+            }
+
+        }
+        if(yPoints[0] > painelHeight) {
+
+            for(int i = 0; i < yPoints.length; i++){
+                yPoints[i] -= painelHeight;
+            }
+
+        }
+        if(xPoints[0] < 0) {
+
+            for(int i = 0; i < xPoints.length; i++){
+                xPoints[i] += painelWidth;
+            }
+
+        }
+        if(yPoints[0] < 0) {
+
+            for(int i = 0; i < yPoints.length; i++){
+                yPoints[i] += painelHeight;
+            }
+
+        }
+
+    }
 }

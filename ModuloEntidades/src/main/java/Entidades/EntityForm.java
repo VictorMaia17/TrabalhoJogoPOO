@@ -2,7 +2,7 @@ package Entidades;
 
 import java.awt.*;
 
-public abstract class EntityForm implements Entity {
+public class EntityForm implements Entity {
 
     protected int painelHeight;
     protected int painelWidth;
@@ -23,36 +23,42 @@ public abstract class EntityForm implements Entity {
         g.fillPolygon(xPoints, yPoints, numberPoints);
     }
 
-    protected void interactionBorder() {
-
-        if(xPoints[0] > painelWidth) {
-
-            for(int i = 0; i < xPoints.length; i++){
-                xPoints[i] -= painelWidth;
-            }
-
-        }
-        if(yPoints[0] > painelHeight) {
-
-            for(int i = 0; i < yPoints.length; i++){
-                yPoints[i] -= painelHeight;
-            }
-
-        }
-        if(xPoints[0] < 0) {
-
-            for(int i = 0; i < xPoints.length; i++){
-                xPoints[i] += painelWidth;
-            }
-
-        }
-        if(yPoints[0] < 0) {
-
-            for(int i = 0; i < yPoints.length; i++){
-                yPoints[i] += painelHeight;
-            }
-
-        }
-
+    @Override
+    public int getX() {
+        return xPoints[0];
     }
+
+    @Override
+    public int getY() {
+        return yPoints[0];
+    }
+
+    @Override
+    public int getWidth() {
+        return 0;
+    }
+
+    @Override
+    public int getHeight() {
+        return 0;
+    }
+
+    @Override
+    public void setX(int x) {
+        int diference = x - xPoints[0];
+
+        for(int i = 0; i < numberPoints; i++) {
+            xPoints[i] += diference;
+        }
+    }
+
+    @Override
+    public void setY(int y) {
+        int diference = y - yPoints[0];
+
+        for(int i = 0; i < numberPoints; i++) {
+            yPoints[i] += diference;
+        }
+    }
+
 }

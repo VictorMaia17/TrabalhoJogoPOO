@@ -1,41 +1,46 @@
 package ModuloExibicao;
 
-import Entidades.Entity;
-import Entidades.EntityForm;
-import Entidades.EntitySprite;
-import Movimentacao.MovimentacaoEntidade;
+import Entidades.*;
+import Movimentacao.MoveEntity;
 
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
 public class Lula {
 
     public static void main(String[] args) {
 
-        Image lula = new ImageIcon("C:\\Users\\VICTOR MAIA\\Downloads\\lula.png").getImage();
-        Image prisao = new ImageIcon("C:\\Users\\VICTOR MAIA\\Downloads\\prisao.png").getImage();
+        PainelExibicao exibicion = new PainelExibicao();
 
+        Entity lulaEntity = new EntityForm(400, 800, new int[]{5, 5, 100, 100}, new int[]{50, 100, 100, 50}, 4);
+        MovingEntityForm quadradoQueAnda = new MovingEntityForm(400, 800, new int[]{500, 500, 600, 600}, new int[]{200, 300, 300, 200}, 4, 10);
 
-        EntitySprite lulaEntidade = new EntitySprite(10, 400, 800, 5, 5, 40, 72, lula);
+        Image lula = new ImageIcon(Lula.class.getResource("/lula2.png")).getImage();
+        MovingEntitysSprite lulaEntidade = new MovingEntitysSprite(400, 800, 300, 50, 100, 100, lula, 10);
 
-        PainelExibicao exibicao = new PainelExibicao(new Entity[]{lulaEntidade});
-        MovimentacaoEntidade movimentacao = new MovimentacaoEntidade(lulaEntidade);
+        exibicion.addEntity(lulaEntity);
+        exibicion.addEntity(quadradoQueAnda);
+        exibicion.addEntity(lulaEntidade);
 
-        exibicao.addKeyListener(movimentacao);
+        MoveEntity moveEntity = new MoveEntity(quadradoQueAnda);
+        MoveEntity moverLula = new MoveEntity(lulaEntidade);
+
+        exibicion.addKeyListener(moveEntity);
+        exibicion.addKeyListener(moverLula);
 
         // Cria o frame e adiciona o painel
         JFrame frame = new JFrame("Painel");
-        frame.add(exibicao);
+        frame.add(exibicion);
         frame.setSize(800, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
         // Garante que o painel receba o foco para capturar teclas
-        exibicao.requestFocusInWindow();
+        exibicion.requestFocusInWindow();
 
         // Atualização contínua da tela
         while (true) {
-            exibicao.repaint();
+            exibicion.repaint();
             try {
                 Thread.sleep(16); // 60 FPS aproximadamente
             } catch (InterruptedException e) {
